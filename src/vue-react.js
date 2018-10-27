@@ -41,9 +41,11 @@ function VNodesToChildren(VNodes) {
     var children = [];
     Object.keys(VNodes).forEach(function (i) {
         var VNode = VNodes[i];
-        var child = VNodeToReact(VNode);
-        if (child) {
-            children.push(child);
+        if (typeof VNode === 'object') {
+            var child = VNodeToReact(VNode);
+            if (child) {
+                children.push(child);
+            }
         }
     });
     return children;
